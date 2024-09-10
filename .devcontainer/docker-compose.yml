@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  mobile-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sleep infinity
+    user: root

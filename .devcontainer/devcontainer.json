@@ -1,0 +1,27 @@
+{
+  "name": "flutter-demo",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "mobile-app",
+  "workspaceFolder": "/home/developer/workspace",
+  "mounts": [
+    "source=${localWorkspaceFolder}/workspace,target=/home/developer/workspace,type=bind,consistency=delegated"
+  ],
+  "remoteUser": "root",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dart-code.flutter",
+        "dart-code.dart-code",
+        "redhat.vscode-yaml",
+        "maptz.regionfolder",
+        "qwtel.sqlite-viewer",
+        "vscode-icons-team.vscode-icons",
+        "get-snippets.get-snippets"
+      ],
+      "settings": {
+        "terminal.integrated.shellIntegration.history": 100
+      }
+    }
+  },
+  "postStartCommand": "bash ../script.sh"
+}
