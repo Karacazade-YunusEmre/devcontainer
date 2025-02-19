@@ -1,7 +1,7 @@
 {
   "name": "flutter-demo",
   "dockerComposeFile": "docker-compose.yml",
-  "service": "mobile-app",
+  "service": "app",
   "workspaceFolder": "/home/developer/workspace",
   "mounts": [
     "source=${localWorkspaceFolder}/workspace,target=/home/developer/workspace,type=bind,consistency=delegated"
@@ -15,7 +15,6 @@
         "redhat.vscode-yaml",
         "maptz.regionfolder",
         "qwtel.sqlite-viewer",
-        "vscode-icons-team.vscode-icons",
         "get-snippets.get-snippets"
       ],
       "settings": {

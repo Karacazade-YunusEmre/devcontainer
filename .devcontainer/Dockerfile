@@ -1,8 +1,9 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 # Prerequisites
-RUN apt update && apt upgrade -y
-RUN apt install -y curl git unzip xz-utils zip libglu1-mesa wget clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y curl git unzip xz-utils zip libglu1-mesa wget\
+                       clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
 
 # Setup new user
 RUN useradd -ms /bin/bash developer
@@ -10,14 +11,14 @@ USER developer
 WORKDIR /home/developer
 
 # Download and Setup Java
-RUN wget -O jdk.tar.gz https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz
+RUN wget -O jdk.tar.gz https://download.oracle.com/java/17/archive/jdk-17.0.12_linux-x64_bin.tar.gz
 RUN tar -xf jdk.tar.gz && rm jdk.tar.gz
-RUN mv jdk-* jdk
+RUN mv jdk* jdk
 
 # Download and Setup NodeJs
-RUN wget -O node.tar.xz https://nodejs.org/dist/v20.13.0/node-v20.13.0-linux-x64.tar.xz
+RUN wget -O node.tar.xz https://nodejs.org/dist/v22.14.0/node-v22.14.0-linux-x64.tar.xz
 RUN tar -xf node.tar.xz && rm node.tar.xz
-RUN mv node-v20.13.0-linux-x64 node
+RUN mv node* node
 
 # Setup Environment
 ENV HOME /home/developer
@@ -48,15 +49,15 @@ RUN mv tools Android/sdk/cmdline-tools/
 RUN mv platform-tools Android/sdk/
 
 RUN yes | sdkmanager --licenses
-RUN sdkmanager "build-tools;34.0.0" 
-RUN sdkmanager "platforms;android-34" 
+RUN sdkmanager "build-tools;35.0.0" 
+RUN sdkmanager "platforms;android-35" 
 RUN sdkmanager "platform-tools" 
 RUN sdkmanager "cmdline-tools;latest"
-RUN sdkmanager "sources;android-34"
+RUN sdkmanager "sources;android-35"
 RUN sdkmanager --update
 
 # Download Flutter SDK
-RUN wget -O flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.0-stable.tar.xz
+RUN wget -O flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.29.0-stable.tar.xz
 RUN tar -xf flutter.tar.xz && rm flutter.tar.xz
 RUN git config --global --add safe.directory /home/developer/flutter
 
